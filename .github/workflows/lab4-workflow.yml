@@ -7,6 +7,12 @@ on:
 jobs:
     npm-package:
       runs-on: ubuntu-latest
+
+    # ✅ Enable write access to packages using job-level permissions
+      permissions:
+        packages: write
+        contents: read
+          
       steps:
         - name: Checkout Repository
           uses: actions/checkout@v4
@@ -17,3 +23,8 @@ jobs:
             node-version: "20.x"
             registry-url: 'https://npm.pkg.github.com/'
         - run: npm install
+
+        - name: Publish to GitHub NPM Registry
+          run: npm publish
+          env:
+            NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
