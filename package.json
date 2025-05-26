@@ -24,7 +24,7 @@
     "chai": "*",
     "chai-http": "*",
     "mocha": "*"
-  }
+  },
   "publishConfig": {
   "registry": "https://npm.pkg.github.com/"
 }
